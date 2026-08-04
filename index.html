@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suyog Sathe — Senior Full-Stack Engineer</title>
+<meta name="description" content="Suyog Sathe — Senior Full-Stack Software Engineer specializing in Java/Spring Boot, React, and AI-assisted engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1015;
+    --bg-panel: #161920;
+    --bg-panel-2: #1b1f28;
+    --border: #262b35;
+    --border-soft: #1e222b;
+    --text: #e6e8eb;
+    --text-dim: #8b93a3;
+    --text-faint: #565f70;
+    --amber: #e8a33d;
+    --add: #5fb87a;
+    --remove: #d9736f;
+    --blue: #6ca8e0;
+    --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --maxw: 880px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    font-size: 16px;
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(232,163,61,0.05), transparent 40%),
+      radial-gradient(circle at 85% 20%, rgba(108,168,224,0.04), transparent 40%);
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  :focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection { background: var(--amber); color: #14161b; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14,16,21,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .brand {
+    font-family: var(--mono); font-weight: 600; font-size: 14px;
+    color: var(--text); letter-spacing: -0.2px;
+  }
+  .brand .amber { color: var(--amber); }
+  .brand .dim { color: var(--text-faint); }
+  .navlinks { display: flex; align-items: center; gap: 28px; font-family: var(--mono); font-size: 13px; }
+  .navlinks a { color: var(--text-dim); }
+  .navlinks a:hover { color: var(--text); text-decoration: none; }
+  .navlinks .btn-resume {
+    color: var(--bg); background: var(--amber);
+    padding: 6px 14px; border-radius: 4px; font-weight: 600;
+  }
+  .navlinks .btn-resume:hover { background: #f0b357; text-decoration: none; }
+  @media (max-width: 640px) {
+    .navlinks a:not(.btn-resume) { display: none; }
+  }
+
+  /* ---------- HERO / TERMINAL ---------- */
+  header.hero { padding: 72px 0 56px; }
+  .term {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 14px;
+    background: var(--bg-panel-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #d9736f66; }
+  .dot.y { background: #e8a33d66; }
+  .dot.g { background: #5fb87a66; }
+  .term-title { margin-left: 8px; font-family: var(--mono); font-size: 12px; color: var(--text-faint); }
+  .term-body { padding: 28px 26px 32px; font-family: var(--mono); font-size: 14.5px; }
+  .term-body .line { color: var(--text-dim); margin-bottom: 4px; }
+  .term-body .prompt { color: var(--add); }
+  .term-body .path { color: var(--blue); }
+  .term-body .out { color: var(--text); margin: 14px 0 4px; }
+
+  .h1 {
+    font-family: var(--mono);
+    font-weight: 800;
+    font-size: clamp(28px, 4.5vw, 44px);
+    letter-spacing: -0.5px;
+    margin: 18px 0 6px;
+    line-height: 1.15;
+  }
+  .h1 .cursor {
+    display: inline-block; width: 0.55ch; background: var(--amber);
+    animation: blink 1s step-end infinite; margin-left: 2px; height: 0.9em; vertical-align: -0.1em;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .role {
+    font-family: var(--mono); color: var(--amber); font-size: 15px; font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .tagline { color: var(--text-dim); max-width: 60ch; font-size: 15.5px; }
+  .tagline .k { color: var(--text); }
+
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 10px 18px; margin-top: 20px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--text-faint);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-meta .amber-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--add); display: inline-block; }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section { padding: 56px 0; border-top: 1px solid var(--border-soft); }
+  .sec-label {
+    font-family: var(--mono); font-size: 12.5px; color: var(--text-faint);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+  }
+  .sec-label::before { content: "//"; color: var(--amber); }
+  .sec-title { font-family: var(--mono); font-weight: 700; font-size: 22px; margin-bottom: 4px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-text p { color: var(--text-dim); margin-bottom: 14px; font-size: 15.5px; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .skills-block {
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px 20px; font-family: var(--mono); font-size: 13px;
+  }
+  .skills-block .imp { color: var(--blue); }
+  .skills-block .kw { color: var(--text-faint); }
+  .skills-block .str { color: var(--add); }
+  .skills-block .row { margin-bottom: 9px; white-space: pre-wrap; word-break: break-word; }
+
+  /* ---------- FEATURED PROJECT ---------- */
+  .project-card {
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden;
+  }
+  .project-head { padding: 24px 26px 10px; }
+  .project-head .flag {
+    display: inline-block; font-family: var(--mono); font-size: 11px; font-weight: 700;
+    color: var(--amber); background: rgba(232,163,61,0.1); border: 1px solid rgba(232,163,61,0.3);
+    padding: 3px 8px; border-radius: 4px; margin-bottom: 12px; letter-spacing: 0.5px;
+  }
+  .project-head h3 { font-family: var(--mono); font-size: 19px; margin-bottom: 8px; }
+  .project-head p { color: var(--text-dim); font-size: 15px; max-width: 62ch; }
+
+  .diff {
+    margin: 18px 26px; font-family: var(--mono); font-size: 13.5px;
+    border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+  }
+  .diff-line { display: flex; padding: 7px 14px; gap: 10px; }
+  .diff-line.rm { background: rgba(217,115,111,0.08); color: #e2a19e; }
+  .diff-line.add { background: rgba(95,184,122,0.08); color: #a7d9b7; }
+  .diff-line .sym { opacity: 0.7; user-select: none; }
+
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border); margin-top: 4px;
+  }
+  @media (max-width: 640px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    background: var(--bg-panel-2); padding: 18px 16px; text-align: left;
+  }
+  .stat .num { font-family: var(--mono); font-weight: 800; font-size: 22px; color: var(--add); }
+  .stat .lbl { font-family: var(--mono); font-size: 11px; color: var(--text-faint); margin-top: 4px; }
+
+  /* ---------- SECONDARY PROJECT ---------- */
+  .proj-mini {
+    display: flex; justify-content: space-between; gap: 20px;
+    padding: 18px 0; border-bottom: 1px solid var(--border-soft);
+    flex-wrap: wrap;
+  }
+  .proj-mini:last-child { border-bottom: none; }
+  .proj-mini h4 { font-family: var(--mono); font-size: 15px; margin-bottom: 6px; }
+  .proj-mini p { color: var(--text-dim); font-size: 14.5px; max-width: 55ch; }
+  .proj-mini .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .tag {
+    font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+    border: 1px solid var(--border); padding: 2px 8px; border-radius: 20px;
+  }
+
+  /* ---------- EXPERIENCE / GIT LOG ---------- */
+  .commit {
+    display: grid; grid-template-columns: 24px 1fr; gap: 16px;
+    padding-bottom: 32px; position: relative;
+  }
+  .commit:last-child { padding-bottom: 0; }
+  .commit-rail { position: relative; display: flex; justify-content: center; }
+  .commit-rail::before {
+    content: ""; position: absolute; top: 18px; bottom: -32px; width: 1px; background: var(--border);
+  }
+  .commit:last-child .commit-rail::before { display: none; }
+  .commit-dot {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--amber);
+    border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--border); margin-top: 6px; flex-shrink: 0;
+  }
+  .commit-body {}
+  .commit-meta {
+    font-family: var(--mono); font-size: 12px; color: var(--text-faint);
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 6px;
+  }
+  .commit-meta .hash { color: var(--blue); }
+  .commit-title { font-family: var(--mono); font-weight: 700; font-size: 16.5px; margin-bottom: 2px; }
+  .commit-sub { color: var(--text-dim); font-size: 13.5px; margin-bottom: 12px; }
+  .commit ul { list-style: none; }
+  .commit li {
+    position: relative; padding-left: 20px; margin-bottom: 8px;
+    color: var(--text-dim); font-size: 14.5px;
+  }
+  .commit li::before { content: "+"; position: absolute; left: 0; color: var(--add); font-family: var(--mono); font-weight: 700; }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row { display: flex; justify-content: space-between; gap: 20px; padding: 12px 0; flex-wrap: wrap; }
+  .edu-row .deg { font-weight: 600; font-size: 15px; }
+  .edu-row .inst { color: var(--text-dim); font-size: 14px; }
+  .edu-row .date { font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); white-space: nowrap; }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer { padding: 60px 0 50px; }
+  .contact-box {
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 36px 32px; text-align: center;
+  }
+  .contact-box .sec-label { justify-content: center; }
+  .contact-box h2 { font-family: var(--mono); font-size: 24px; margin-bottom: 10px; }
+  .contact-box p { color: var(--text-dim); margin-bottom: 24px; }
+  .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .clink {
+    font-family: var(--mono); font-size: 13.5px;
+    border: 1px solid var(--border); padding: 10px 18px; border-radius: 6px;
+    color: var(--text); display: inline-flex; align-items: center; gap: 8px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .clink:hover { border-color: var(--amber); color: var(--amber); text-decoration: none; }
+  .clink.primary { background: var(--amber); color: var(--bg); border-color: var(--amber); font-weight: 600; }
+  .clink.primary:hover { background: #f0b357; color: var(--bg); }
+  .foot-note {
+    text-align: center; margin-top: 40px; font-family: var(--mono);
+    font-size: 12px; color: var(--text-faint);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="amber">~/</span>suyog-sathe<span class="dim">.dev</span></div>
+    <div class="navlinks">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#experience">experience</a>
+      <a href="assets/resume.pdf" class="btn-resume" download>Resume ↓</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="term">
+      <div class="term-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="term-title">bash — 80×24</span>
+      </div>
+      <div class="term-body">
+        <div class="line"><span class="prompt">sathe@dev</span>:<span class="path">~</span>$ whoami</div>
+        <h1 class="h1">Suyog Sathe<span class="cursor"></span></h1>
+        <div class="role">Senior Full-Stack Software Engineer</div>
+        <p class="tagline">
+          <span class="k">5+ years</span> building enterprise Java/Spring Boot backends and React frontends at
+          <span class="k">MathWorks</span> and <span class="k">Cisco</span>. I spend a lot of my time getting AI
+          coding agents to do unglamorous, high-leverage work well — like upgrading 250+ production repos without
+          anyone having to babysit it.
+        </p>
+        <div class="hero-meta">
+          <span><span class="amber-dot"></span>Boston, MA — open to EU relocation</span>
+          <span><span class="amber-dot"></span>MSc Information Systems, Northeastern</span>
+          <span><span class="amber-dot"></span>Java · Spring Boot · React · TypeScript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label">about</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a <strong>Senior Software Engineer</strong> currently at The MathWorks, previously at Cisco Systems,
+          with an MSc in Information Systems from Northeastern University. My work sits at the intersection of
+          <strong>enterprise backend engineering</strong> and <strong>AI-assisted development</strong> — using tools
+          like Claude, Codex, and Copilot not as novelties, but as part of how I ship production code faster and
+          more reliably.
+        </p>
+        <p>
+          The project I'm proudest of is a Spring Boot upgrade skill that turned a multi-week manual chore into a
+          self-serve command any team could run against their own repo — adopted across <strong>250+ repositories</strong>.
+          I care about code that's boring in the right way: well-tested, well-reviewed, and easy for the next person
+          to touch.
+        </p>
+      </div>
+      <div class="skills-block">
+        <div class="row"><span class="imp">import</span> { <span class="str">Java, TypeScript, SQL</span> } <span class="kw">from</span> <span class="imp">'languages'</span>;</div>
+        <div class="row"><span class="imp">import</span> { <span class="str">SpringBoot, Hibernate, REST, RabbitMQ, Solr</span> } <span class="kw">from</span> <span class="imp">'backend'</span>;</div>
+        <div class="row"><span class="imp">import</span> { <span class="str">React, Vite, Jest, RTL</span> } <span class="kw">from</span> <span class="imp">'frontend'</span>;</div>
+        <div class="row"><span class="imp">import</span> { <span class="str">MySQL, SQLServer</span> } <span class="kw">from</span> <span class="imp">'data'</span>;</div>
+        <div class="row"><span class="imp">import</span> { <span class="str">Docker, GitLabCI, AWS, Maven</span> } <span class="kw">from</span> <span class="imp">'devops'</span>;</div>
+        <div class="row"><span class="imp">import</span> { <span class="str">Claude, Codex, Copilot, Amp</span> } <span class="kw">from</span> <span class="imp">'ai-tools'</span>;</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-label">work</div>
+    <h2 class="sec-title" style="margin-bottom:20px;">Featured project</h2>
+
+    <div class="project-card">
+      <div class="project-head">
+        <span class="flag">AI-ASSISTED · 250+ REPOS</span>
+        <h3>Spring Boot Upgrade Skill</h3>
+        <p>
+          An end-to-end agentic skill that determines the correct target Spring Boot version, runs compilation,
+          test compilation, and the full unit test suite, then uses an agentic loop to diagnose and fix any
+          failures before committing and pushing to GitLab. Domain teams self-serve upgrades by running it against
+          their own repo — no manual migration effort required.
+        </p>
+      </div>
+      <div class="diff">
+        <div class="diff-line rm"><span class="sym">−</span><span>manual upgrade: ~2–3 weeks of engineering time per repo, one at a time</span></div>
+        <div class="diff-line add"><span class="sym">+</span><span>self-serve skill: run it, review the PR, merge</span></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat"><div class="num">250+</div><div class="lbl">REPOS ADOPTED</div></div>
+        <div class="stat"><div class="num">+80%</div><div class="lbl">DELIVERY ACCELERATION</div></div>
+        <div class="stat"><div class="num">+30%</div><div class="lbl">API LATENCY GAIN</div></div>
+        <div class="stat"><div class="num">+30%</div><div class="lbl">TEST COVERAGE GAIN</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 36px;">
+      <div class="proj-mini">
+        <div>
+          <h4>TS Migration &amp; Scaffolding Tool</h4>
+          <p>
+            An Nx and TypeScript CLI that migrates React/JavaScript projects to TypeScript and scaffolds new
+            TypeScript projects from scratch, built with AI-assisted development. Cut a multi-week manual migration
+            of a production UI app down to one day.
+          </p>
+          <div class="tags"><span class="tag">Nx</span><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Claude / Codex</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label">experience</div>
+    <h2 class="sec-title" style="margin-bottom:28px;">git log --oneline --graph</h2>
+
+    <div class="commit">
+      <div class="commit-rail"><div class="commit-dot"></div></div>
+      <div class="commit-body">
+        <div class="commit-meta"><span class="hash">a3f9c12</span><span>·</span><span>HEAD → main</span></div>
+        <div class="commit-title">Senior Software Engineer — The MathWorks, Inc.</div>
+        <div class="commit-sub">Feb 2025 — Present</div>
+        <ul>
+          <li>Drove migration of a customer-facing app from Backbone.js to React, improving UX, maintainability, and page load performance.</li>
+          <li>Optimized MySQL queries via indexing and restructuring, reducing API response times by 30%.</li>
+          <li>Built ActiveBatch/CRON automation to auto-clear stale RabbitMQ consumers; co-authored a Maven plugin to streamline local dev workflows.</li>
+          <li>Established GitLab CI/CD pipelines for automated build, test, and deployment across enterprise-scale Java/Spring Boot services.</li>
+          <li>Led architecture and design of scalable backend systems, driving technical decision-making across the team.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="commit">
+      <div class="commit-rail"><div class="commit-dot"></div></div>
+      <div class="commit-body">
+        <div class="commit-meta"><span class="hash">7d21e88</span></div>
+        <div class="commit-title">Software Engineer II — Cisco Systems, Inc.</div>
+        <div class="commit-sub">Aug 2022 — Mar 2024</div>
+        <ul>
+          <li>Led an offshore team to optimize API performance through server-side analysis, cutting response latency from 50s to 4s.</li>
+          <li>Raised frontend code coverage by 30% using Jest, Enzyme, and React Testing Library.</li>
+          <li>Built and maintained REST API endpoints in a microservices architecture; automated build/deploy via CI/CD.</li>
+          <li>Containerized the application with Docker for consistent dev, staging, and production deployments.</li>
+          <li>Collaborated with UX and product stakeholders, contributing to a 20% increase in user engagement.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-label">education</div>
+    <div class="edu-row">
+      <div><div class="deg">MSc, Information Systems</div><div class="inst">Northeastern University, Boston</div></div>
+      <div class="date">Sep 2017 — Dec 2019</div>
+    </div>
+    <div class="edu-row">
+      <div><div class="deg">BE, Instrumentation Engineering</div><div class="inst">University of Mumbai</div></div>
+      <div class="date">May 2012 — May 2016</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div class="sec-label">contact</div>
+      <h2>Let's talk</h2>
+      <p>Open to Senior Full-Stack, Backend, and Tech Lead roles across the Netherlands, Ireland, Germany, Sweden, and Finland.</p>
+      <div class="contact-links">
+        <a class="clink primary" href="mailto:suyogsathe1512@gmail.com">✉ Email</a>
+        <a class="clink" href="https://linkedin.com/in/suyogsathe-sde" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="clink" href="https://github.com/suyogsathe7" target="_blank" rel="noopener">GitHub</a>
+        <a class="clink" href="assets/resume.pdf" download>Resume ↓</a>
+      </div>
+    </div>
+    <div class="foot-note">© 2026 Suyog Sathe · built with HTML, CSS, and a healthy amount of git diff nostalgia</div>
+  </div>
+</footer>
+
+</body>
+</html>
