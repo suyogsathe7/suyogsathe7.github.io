@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {}
+})();
+</script>
 <title>Suyog Sathe · Senior Full-Stack Engineer</title>
 <meta name="description" content="Suyog Sathe, Senior Full-Stack Software Engineer specializing in Java/Spring Boot, React, and AI-assisted engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +34,21 @@
     --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
     --sans: 'Inter', -apple-system, sans-serif;
     --maxw: 880px;
+  }
+
+  [data-theme="light"] {
+    --bg: #f5f6f8;
+    --bg-panel: #ffffff;
+    --bg-panel-2: #eef0f3;
+    --border: #dde1e7;
+    --border-soft: #e6e9ed;
+    --text: #14171c;
+    --text-dim: #4a5568;
+    --text-faint: #7a8496;
+    --amber: #a8650a;
+    --add: #157a3d;
+    --remove: #b5332c;
+    --blue: #1868b0;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -89,6 +113,17 @@
   @media (max-width: 640px) {
     .navlinks a:not(.btn-resume) { display: none; }
   }
+
+  .theme-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg-panel); color: var(--text-dim); cursor: pointer; font-size: 14px;
+    transition: border-color 0.15s, color 0.15s; line-height: 1;
+  }
+  .theme-toggle:hover { border-color: var(--amber); color: var(--amber); }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+  [data-theme="light"] .theme-toggle .icon-sun { display: inline; }
 
   /* ---------- HERO / TERMINAL ---------- */
   header.hero { padding: 72px 0 56px; }
@@ -198,8 +233,8 @@
     border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
   }
   .diff-line { display: flex; padding: 7px 14px; gap: 10px; }
-  .diff-line.rm { background: rgba(217,115,111,0.08); color: #e2a19e; }
-  .diff-line.add { background: rgba(95,184,122,0.08); color: #a7d9b7; }
+  .diff-line.rm { background: rgba(217,115,111,0.08); color: var(--remove); }
+  .diff-line.add { background: rgba(95,184,122,0.08); color: var(--add); }
   .diff-line .sym { opacity: 0.7; user-select: none; }
 
   .stats-row {
@@ -345,6 +380,9 @@
       <a href="#work">work</a>
       <a href="#experience">experience</a>
       <a href="#why">why me</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme" aria-pressed="false">
+        <span class="icon-moon">☾</span><span class="icon-sun">☀</span>
+      </button>
       <a href="assets/resume.pdf" class="btn-resume" download>Resume ↓</a>
     </div>
   </div>
@@ -592,6 +630,26 @@
     <div class="foot-note">© 2026 Suyog Sathe · built with HTML, CSS, and a healthy amount of git diff nostalgia</div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  function isLight() { return root.getAttribute('data-theme') === 'light'; }
+  function sync() { btn.setAttribute('aria-pressed', String(isLight())); }
+  sync();
+  btn.addEventListener('click', function(){
+    if (isLight()) {
+      root.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      root.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
+    }
+    sync();
+  });
+})();
+</script>
 
 </body>
 </html>
