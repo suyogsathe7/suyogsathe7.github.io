@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suyog Sathe — Senior Full-Stack Engineer</title>
-<meta name="description" content="Suyog Sathe — Senior Full-Stack Software Engineer specializing in Java/Spring Boot, React, and AI-assisted engineering.">
+<title>Suyog Sathe · Senior Full-Stack Engineer</title>
+<meta name="description" content="Suyog Sathe, Senior Full-Stack Software Engineer specializing in Java/Spring Boot, React, and AI-assisted engineering.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -133,6 +133,17 @@
     font-family: var(--mono); color: var(--amber); font-size: 15px; font-weight: 600;
     margin-bottom: 14px;
   }
+
+  .commit-tagline {
+    font-family: var(--mono); font-size: 14.5px; margin-bottom: 18px;
+    padding: 10px 14px; background: var(--bg-panel-2); border: 1px solid var(--border);
+    border-radius: 6px; display: inline-block; max-width: 100%;
+  }
+  .ct-type { color: var(--add); font-weight: 700; }
+  .ct-scope { color: var(--text-faint); }
+  .ct-colon { color: var(--text-faint); margin-right: 4px; }
+  .ct-msg { color: var(--text); }
+  @media (max-width: 480px) { .commit-tagline { font-size: 13px; } }
   .tagline { color: var(--text-dim); max-width: 60ch; font-size: 15.5px; }
   .tagline .k { color: var(--text); }
 
@@ -252,6 +263,52 @@
   .edu-row .inst { color: var(--text-dim); font-size: 14px; }
   .edu-row .date { font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); white-space: nowrap; }
 
+  /* ---------- WHY / PR CARD ---------- */
+  .pr-card {
+    background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden;
+  }
+  .pr-head { padding: 22px 26px 18px; border-bottom: 1px solid var(--border-soft); }
+  .pr-title-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .pr-icon { color: var(--add); font-family: var(--mono); font-size: 16px; }
+  .pr-title-row h3 { font-family: var(--mono); font-size: 17px; font-weight: 700; line-height: 1.4; }
+  .pr-meta { font-family: var(--mono); font-size: 12.5px; color: var(--text-faint); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .pr-badge {
+    background: rgba(95,184,122,0.15); color: var(--add); border: 1px solid rgba(95,184,122,0.4);
+    padding: 2px 10px; border-radius: 20px; font-weight: 700; font-size: 11px;
+  }
+  .pr-user, .pr-branch { color: var(--blue); }
+
+  .pr-checks { padding: 6px 26px; }
+  .check { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border-soft); }
+  .check:last-child { border-bottom: none; }
+  .check-ico {
+    width: 22px; height: 22px; border-radius: 50%; background: rgba(95,184,122,0.15);
+    color: var(--add); display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .check-name { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .check-desc { font-size: 14px; color: var(--text-dim); }
+
+  .pr-footer {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    padding: 20px 26px; background: var(--bg-panel-2); border-top: 1px solid var(--border-soft);
+  }
+  .pr-status { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 13px; color: var(--add); font-weight: 600; }
+  .pr-status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--add); }
+  .pr-merge-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--add); color: #0e1015; font-family: var(--mono); font-weight: 700; font-size: 13.5px;
+    padding: 10px 18px; border-radius: 6px; transition: background 0.15s;
+  }
+  .pr-merge-btn:hover { background: #74c98d; text-decoration: none; }
+  .merge-ico { font-size: 14px; }
+
+  @media (max-width: 560px) {
+    .pr-head, .pr-checks, .pr-footer { padding-left: 18px; padding-right: 18px; }
+    .pr-footer { flex-direction: column; align-items: stretch; text-align: center; }
+  }
+
   /* ---------- CONTACT / FOOTER ---------- */
   footer { padding: 60px 0 50px; }
   .contact-box {
@@ -286,6 +343,7 @@
       <a href="#about">about</a>
       <a href="#work">work</a>
       <a href="#experience">experience</a>
+      <a href="#why">why me</a>
       <a href="assets/resume.pdf" class="btn-resume" download>Resume ↓</a>
     </div>
   </div>
@@ -296,20 +354,24 @@
     <div class="term">
       <div class="term-bar">
         <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="term-title">bash — 80×24</span>
+        <span class="term-title">bash · 80×24</span>
       </div>
       <div class="term-body">
         <div class="line"><span class="prompt">sathe@dev</span>:<span class="path">~</span>$ whoami</div>
         <h1 class="h1">Suyog Sathe<span class="cursor"></span></h1>
         <div class="role">Senior Full-Stack Software Engineer</div>
+        <div class="commit-tagline">
+          <span class="ct-type">feat</span><span class="ct-scope">(self)</span><span class="ct-colon">:</span>
+          <span class="ct-msg">senior engineer, mentor, and full-time AI wrangler</span>
+        </div>
         <p class="tagline">
           <span class="k">5+ years</span> building enterprise Java/Spring Boot backends and React frontends at
           <span class="k">MathWorks</span> and <span class="k">Cisco</span>. I spend a lot of my time getting AI
-          coding agents to do unglamorous, high-leverage work well — like upgrading 250+ production repos without
-          anyone having to babysit it.
+          coding agents to do unglamorous, high-leverage work well: Spring Boot upgrades across 250+
+          production repos, without anyone having to babysit it.
         </p>
         <div class="hero-meta">
-          <span><span class="amber-dot"></span>Boston, MA — open to EU relocation</span>
+          <span><span class="amber-dot"></span>Boston, MA · open to EU relocation</span>
           <span><span class="amber-dot"></span>MSc Information Systems, Northeastern</span>
           <span><span class="amber-dot"></span>Java · Spring Boot · React · TypeScript</span>
         </div>
@@ -326,13 +388,13 @@
         <p>
           I'm a <strong>Senior Software Engineer</strong> currently at The MathWorks, previously at Cisco Systems,
           with an MSc in Information Systems from Northeastern University. My work sits at the intersection of
-          <strong>enterprise backend engineering</strong> and <strong>AI-assisted development</strong> — using tools
+          <strong>enterprise backend engineering</strong> and <strong>AI-assisted development</strong>, using tools
           like Claude, Codex, and Copilot not as novelties, but as part of how I ship production code faster and
           more reliably.
         </p>
         <p>
           The project I'm proudest of is a Spring Boot upgrade skill that turned a multi-week manual chore into a
-          self-serve command any team could run against their own repo — adopted across <strong>250+ repositories</strong>.
+          self-serve command any team could run against their own repo, adopted across <strong>250+ repositories</strong>.
           I care about code that's boring in the right way: well-tested, well-reviewed, and easy for the next person
           to touch.
         </p>
@@ -343,6 +405,7 @@
         <div class="row"><span class="imp">import</span> { <span class="str">React, Vite, Jest, RTL</span> } <span class="kw">from</span> <span class="imp">'frontend'</span>;</div>
         <div class="row"><span class="imp">import</span> { <span class="str">MySQL, SQLServer</span> } <span class="kw">from</span> <span class="imp">'data'</span>;</div>
         <div class="row"><span class="imp">import</span> { <span class="str">Docker, GitLabCI, AWS, Maven</span> } <span class="kw">from</span> <span class="imp">'devops'</span>;</div>
+        <div class="row"><span class="imp">import</span> { <span class="str">Actuator, Prometheus, OpenTelemetry, Grafana</span> } <span class="kw">from</span> <span class="imp">'observability'</span>;</div>
         <div class="row"><span class="imp">import</span> { <span class="str">Claude, Codex, Copilot, Amp</span> } <span class="kw">from</span> <span class="imp">'ai-tools'</span>;</div>
       </div>
     </div>
@@ -362,7 +425,7 @@
           An end-to-end agentic skill that determines the correct target Spring Boot version, runs compilation,
           test compilation, and the full unit test suite, then uses an agentic loop to diagnose and fix any
           failures before committing and pushing to GitLab. Domain teams self-serve upgrades by running it against
-          their own repo — no manual migration effort required.
+          their own repo, with no manual migration effort required.
         </p>
       </div>
       <div class="diff">
@@ -402,13 +465,14 @@
       <div class="commit-rail"><div class="commit-dot"></div></div>
       <div class="commit-body">
         <div class="commit-meta"><span class="hash">a3f9c12</span><span>·</span><span>HEAD → main</span></div>
-        <div class="commit-title">Senior Software Engineer — The MathWorks, Inc.</div>
-        <div class="commit-sub">Feb 2025 — Present</div>
+        <div class="commit-title">Senior Software Engineer · The MathWorks, Inc.</div>
+        <div class="commit-sub">Feb 2025 - Present</div>
         <ul>
           <li>Drove migration of a customer-facing app from Backbone.js to React, improving UX, maintainability, and page load performance.</li>
           <li>Optimized MySQL queries via indexing and restructuring, reducing API response times by 30%.</li>
           <li>Built ActiveBatch/CRON automation to auto-clear stale RabbitMQ consumers; co-authored a Maven plugin to streamline local dev workflows.</li>
           <li>Established GitLab CI/CD pipelines for automated build, test, and deployment across enterprise-scale Java/Spring Boot services.</li>
+          <li>Enabled observability across services using Spring Boot Actuator with Prometheus and OpenTelemetry, surfacing metrics and traces in Grafana dashboards.</li>
           <li>Led architecture and design of scalable backend systems, driving technical decision-making across the team.</li>
         </ul>
       </div>
@@ -418,8 +482,8 @@
       <div class="commit-rail"><div class="commit-dot"></div></div>
       <div class="commit-body">
         <div class="commit-meta"><span class="hash">7d21e88</span></div>
-        <div class="commit-title">Software Engineer II — Cisco Systems, Inc.</div>
-        <div class="commit-sub">Aug 2022 — Mar 2024</div>
+        <div class="commit-title">Software Engineer II · Cisco Systems, Inc.</div>
+        <div class="commit-sub">Aug 2022 - Mar 2024</div>
         <ul>
           <li>Led an offshore team to optimize API performance through server-side analysis, cutting response latency from 50s to 4s.</li>
           <li>Raised frontend code coverage by 30% using Jest, Enzyme, and React Testing Library.</li>
@@ -437,11 +501,76 @@
     <div class="sec-label">education</div>
     <div class="edu-row">
       <div><div class="deg">MSc, Information Systems</div><div class="inst">Northeastern University, Boston</div></div>
-      <div class="date">Sep 2017 — Dec 2019</div>
+      <div class="date">Sep 2017 - Dec 2019</div>
     </div>
     <div class="edu-row">
       <div><div class="deg">BE, Instrumentation Engineering</div><div class="inst">University of Mumbai</div></div>
-      <div class="date">May 2012 — May 2016</div>
+      <div class="date">May 2012 - May 2016</div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-label">why</div>
+    <div class="pr-card">
+      <div class="pr-head">
+        <div class="pr-title-row">
+          <span class="pr-icon">⑂</span>
+          <h3>feat: add Suyog Sathe to your engineering team</h3>
+        </div>
+        <div class="pr-meta">
+          <span class="pr-badge">Open</span>
+          <span>#247 opened by <span class="pr-user">suyogsathe7</span> · wants to merge into <span class="pr-branch">your-team</span> from <span class="pr-branch">job-search-2026</span></span>
+        </div>
+      </div>
+
+      <div class="pr-checks">
+        <div class="check">
+          <span class="check-ico">✓</span>
+          <div>
+            <div class="check-name">ships-in-production</div>
+            <div class="check-desc">5+ years shipping Java/Spring Boot backends and React frontends at MathWorks and Cisco, not side projects.</div>
+          </div>
+        </div>
+        <div class="check">
+          <span class="check-ico">✓</span>
+          <div>
+            <div class="check-name">reduces-technical-debt-at-scale</div>
+            <div class="check-desc">Built the AI-assisted tooling that upgraded 250+ repos without a team of people doing it by hand.</div>
+          </div>
+        </div>
+        <div class="check">
+          <span class="check-ico">✓</span>
+          <div>
+            <div class="check-name">low-supervision-required</div>
+            <div class="check-desc">Self-motivated enough to run agentic workflows end to end, from diagnosis to a merged PR, with a human only reviewing the diff.</div>
+          </div>
+        </div>
+        <div class="check">
+          <span class="check-ico">✓</span>
+          <div>
+            <div class="check-name">mentors-and-reviews</div>
+            <div class="check-desc">Drove code reviews, mentored teammates, and led architecture decisions, not just an individual contributor.</div>
+          </div>
+        </div>
+        <div class="check">
+          <span class="check-ico">✓</span>
+          <div>
+            <div class="check-name">merge-ready</div>
+            <div class="check-desc">Available to relocate within 8 weeks of offer. No visa runway needed on your side to get started.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pr-footer">
+        <div class="pr-status">
+          <span class="pr-status-dot"></span> All checks have passed
+        </div>
+        <a class="pr-merge-btn" href="mailto:suyogsathe1512@gmail.com?subject=Let%27s%20talk">
+          <span class="merge-ico">⑂</span> Merge this PR
+        </a>
+      </div>
     </div>
   </div>
 </section>
